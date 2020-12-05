@@ -1,11 +1,19 @@
-let step = 9; // дополнительная переменная, равная numFrom для шага
+function printNumbers(from, to) {
+    let step = from; // дополнительная переменная, равная numFrom для шага
 
-const intervalId = setInterval(function (numFrom, numTo) {
+    const intervalId = setInterval(function() {
+    
+        if (step <= to)
+        {
+            console.log(step);
+            step = step + 1;
+        } else {
+            clearInterval(intervalId);
+        }
+    
+    }, 1000); // каждую секунду выводятся числа от 9 до 29
+}
 
-    if (step <= numTo)
-    {
-        console.log(step);
-        step = step + 1;
-    }
+printNumbers(9, 19);
 
-}, 1000, step, 29); // каждую секунду выводятся числа от 9 до 29
+// По условию решение нужно было оформить в виде функции. Опять же, чтобы была возможность повторного использования с другими числами. Кроме того, после того как было распечатано последнее число, интервал нужно очистить, иначе вызов функции, переданной в setInterval так и будет повторяться без конца. Выше исправила
